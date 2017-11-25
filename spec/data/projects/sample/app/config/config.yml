@@ -1,0 +1,10 @@
+# include other config files
+imports:
+    - { resource : parameters.ini }
+    - { resource : bundles.yml }
+
+websockets:
+
+    namespaces:
+
+        - { namespace: "/", handler: "demo.websocket.handler" }

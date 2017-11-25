@@ -1,0 +1,10 @@
+# websocket settings
+websockets:
+
+    socketio:
+    
+
+    # define the namespaces and handlers for each
+    namespaces:
+
+        # - { namespace: "/", handler: "conga.socketio.namespace.handler.default" }

@@ -1,0 +1,5 @@
+services:
+
+    demo.websocket.handler:
+        constructor: "demo-bundle:websocket/DemoWebsocketHandler"
+        arguments: ["@service_container"]

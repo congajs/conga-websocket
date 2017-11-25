@@ -1,0 +1,23 @@
+parameters:
+
+    conga.socketio.listener.constructor: "@conga/framework-socketio:SocketIoListener"
+    conga.socketio.controller.annotation.handler.constructor: "@conga/framework-socketio:annotation/controller/handler/WebsocketAnnotationHandler"
+    conga.socketio.router.constructor: "@conga/framework-socketio:WebsocketRouter"
+    conga.socketio.namespace.handler.default.constructor: "@conga/framework-socketio:namespace/DefaultNamespaceHandler"
+services:
+
+    # the socketio kernel listener
+    conga.socketio.listener:
+        constructor: "%conga.socketio.listener.constructor%"
+        tags:
+            - { name: kernel.event, event: kernel.server_boot, method: onServerBoot, priority: 64 }
+
+    # handler to process the Websocket annotations on controllers
+    conga.socketio.controller.annotations.handler:
+        constructor: "%conga.socketio.controller.annotation.handler.constructor%"
+        #arguments: ["@conga.rest.resource.registry"]
+        tags:
+            - { name: controller.annotation.handler, method: handleAnnotations, priority: 1024 }
+
+    conga.websocket.router:
+        constructor: "%conga.socketio.router.constructor%"
