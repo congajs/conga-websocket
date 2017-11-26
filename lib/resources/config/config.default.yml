@@ -2,9 +2,9 @@
 websockets:
 
     socketio:
-    
+
 
     # define the namespaces and handlers for each
-    namespaces:
+    handlers:
 
-        # - { namespace: "/", handler: "conga.socketio.namespace.handler.default" }
+        # - { namespace: "/", service: "conga.socketio.namespace.handler.default" }

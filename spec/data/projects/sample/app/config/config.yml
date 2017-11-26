@@ -5,6 +5,6 @@ imports:
 
 websockets:
 
-    namespaces:
+    handlers:
 
-        - { namespace: "/", handler: "demo.websocket.handler" }
+        - { namespace: "/", service: "demo.websocket.handler" }

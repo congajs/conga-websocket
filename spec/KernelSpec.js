@@ -4,7 +4,7 @@ const Kernel = require('@conga/framework/lib/kernel/TestKernel');
 const jasmine = require('jasmine');
 const io = require('socket.io-client');
 
-describe("socketio", () => {
+describe("websocket kernel", () => {
 
     //jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000000;
 
@@ -21,7 +21,7 @@ describe("socketio", () => {
         );
 
         kernel.addBundlePaths({
-            '@conga/framework-socketio': path.join(__dirname, '..'),
+            '@conga/framework-websocket': path.join(__dirname, '..'),
             'demo-bundle': path.join(__dirname, 'data', 'projects', 'sample', 'src', 'demo-bundle'),
         });
 
