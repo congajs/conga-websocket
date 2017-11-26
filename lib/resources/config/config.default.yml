@@ -1,10 +1,83 @@
 # websocket settings
 websockets:
 
+    # the options for socket.io server
     socketio:
 
+        # name of the path to capture (/socket.io)
+        path: "/socket.io"
 
-    # define the namespaces and handlers for each
+        # whether to serve the client files (true)
+        serveClient: true
+
+        # the allowed origins (*)
+        origins: "*:*"
+
+        # the storage adapter
+        adapter:
+
+            # the namespaced class for the factory to build adapter
+            factory: "@conga/framework-websocket:adapter/MemoryAdapterFactory"
+
+            # any options to pass to adapter
+            options:
+
+        # engine.IO options below
+
+        # how many ms without a pong packet to consider the connection closed
+        pingTimeout: 60000
+
+        # how many ms before sending a new ping packet
+        pingInterval: 25000
+
+        # how many ms before an uncompleted transport upgrade is cancelled
+        upgradeTimeout: 10000
+
+        # how many bytes or characters a message can be, before closing the session (to avoid DoS).
+        maxHttpBufferSize: 10E7
+
+        #  (Function): A function that receives a given handshake or upgrade request as its first parameter,
+        #  and can decide whether to continue or not. The second argument is a function that needs to be
+        #  called with the decided information: fn(err, success), where success is a boolean value where
+        #  false means that the request is rejected, and err is an error code.
+        allowRequest: null
+
+        # transports to allow connections to
+        transports: ['polling', 'websocket']
+
+        # whether to allow transport upgrades
+        allowUpgrades: true
+
+        # (Object|Boolean): parameters of the WebSocket permessage-deflate extension (see ws module api docs). Set to false to disable.
+        perMessageDeflate: true
+
+        # data is compressed only if the byte size is above this value
+        threshold: 1024
+
+        # (Object|Boolean): parameters of the http compression for the polling transports (see zlib api docs). Set to false to disable. (
+        httpCompression: true
+
+        # (String|Boolean): name of the HTTP cookie that contains the client sid to send as part of handshake response headers. Set to false to not send one.
+        cookie: "io"
+
+        # (String|Boolean): path of the above cookie option. If false, no path will be sent, which means
+        # browsers will only send the cookie on the engine.io attached path (/engine.io).
+        # Set false to not save io cookie on all requests.
+        cookiePath: "/"
+
+        # (Boolean): If true HttpOnly io cookie cannot be accessed by client-side APIs, such as JavaScript.
+        # This option has no effect if cookie or cookiePath is set to false.
+        cookieHttpOnly: true
+
+        # (String): what WebSocket server implementation to use. Specified module must conform to the ws interface (see ws module api docs).
+        # Default value is uws (see µWebSockets).
+        wsEngine: "uws"
+
+        # (Object): an optional packet which will be concatenated to the handshake packet emitted by Engine.IO.
+        initialPacket: null
+
+
+    # define the handlers for each namespace
     handlers:
 
         # - { namespace: "/", service: "conga.socketio.namespace.handler.default" }

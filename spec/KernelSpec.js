@@ -51,6 +51,7 @@ describe("websocket kernel", () => {
         socket.on('connect', (socket) => {
             done();
         });
+
     });
 
     it('should get response from route', (done) => {
